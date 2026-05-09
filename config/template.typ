@@ -13,7 +13,7 @@
         image("../assets/logo.pdf", width: 100%),
         [#set par(leading: 0.65em)
         #smallcaps([
-          Pontificia Universidad Catolica de Chile\
+          #universidad\
           #escuela\
           #departamento\ ])
           *#sigla* -- *#nombre-curso*
@@ -24,7 +24,7 @@
 }
 
 // General configuration
-#let config(doc, darkmode: false) = {
+#let config(doc, text-size: 11pt, darkmode: false) = {
 
 
   let text-color = if darkmode {rgb("#ffffff")} else {rgb("#000000")}
@@ -61,7 +61,7 @@
 
   set text(
     font: "New Computer Modern",
-    size: 11pt,
+    size: text-size,
     lang: "es",
   )
 
@@ -73,7 +73,7 @@
       numbering: numbly("{1:1}.", "{2:a})", "{3:i})","({4})" )
   )
 
-  show raw: set text(font: "New Computer Modern Mono", size: 11pt)
+  show raw: set text(font: "New Computer Modern Mono", size: text-size)
   show heading: set block(above: 1.4em, below: 1em)
   show heading.where(level:1): set text(size: 14pt)
   show heading.where(level:2): set text(size: 12pt)
