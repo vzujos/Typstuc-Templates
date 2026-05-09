@@ -6,6 +6,7 @@
 #let tema = "Tema"
 
 // CURSO
+#let universidad = "Pontificia Universidad Catolica de Chile"
 #let escuela = "Escuela de Ingeniería"
 #let departamento = "Departamento de Ingeniería Mecánica y Metalúrgica"
 #let nombre-curso = "Nombre del Curso"
