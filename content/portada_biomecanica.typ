@@ -1,6 +1,7 @@
 #import "../config/variables.typ": *
 
 #show title: set text(size: 24pt, weight: "semibold")
+#set page(numbering: none)
 
 #place(
   horizon + center,
@@ -18,4 +19,4 @@
   ]
 
 #pagebreak()
-  
+#counter(page).update(1)

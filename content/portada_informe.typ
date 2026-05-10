@@ -1,6 +1,7 @@
 #import "../config/variables.typ": *
 
 #show title: set text(size: 24pt, weight: "semibold")
+#set page(numbering: none)
 
 #place(
   top + center,
@@ -25,11 +26,13 @@
 
 #pagebreak()
 
+
 #place(
   top + left,
   float: true,
   scope: "parent",
 )[ #outline() ]
 
+
 #pagebreak()
-  
+#counter(page).update(1)

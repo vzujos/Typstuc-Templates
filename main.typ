@@ -1,6 +1,8 @@
-// Templates
+// Initial template config
 #import "config/template.typ" as template
-#import "content/portada_biomecanica.typ" as portada
+#show: doc => template.config(doc, darkmode: false)
+
+#import "content/portada_informe.typ" as portada
 
 // Useful packages for presentations and diagrams
 //#import "@preview/touying:0.7.3"
@@ -8,15 +10,13 @@
 //#import "@preview/circuiteria:0.2.0"
 //#import "@preview/fletcher:0.5.8"
 
-// Initial template config
-#show: doc => template.config(doc, darkmode: false)
-
 // Add here any custom configs
 
 
 // Document
 
 #portada
+
 
 = Titulo del documentos
 

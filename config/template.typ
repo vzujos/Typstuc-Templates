@@ -5,8 +5,11 @@
 // Generic UC header
 #let _header() = {
   context {
-    if counter(page).get().first() == 1 [
-      #table(
+    let shown = state("header-shown", false)
+
+    if not shown.get() {
+      shown.update(true)
+      [#table(
         columns: (1in, auto),
         align: (auto, horizon),
         stroke: none,
@@ -19,9 +22,10 @@
           *#sigla* -- *#nombre-curso*
         ]
       )
-    ]
+    ]}
   }
 }
+
 
 // General configuration
 #let config(doc, text-size: 11pt, darkmode: false) = {
