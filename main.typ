@@ -1,6 +1,6 @@
 // Templates
 #import "config/template.typ" as template
-#import "config/portada_informe.typ" as portada
+#import "content/portada_biomecanica.typ" as portada
 
 // Useful packages for presentations and diagrams
 //#import "@preview/touying:0.7.3"
@@ -18,7 +18,7 @@
 
 #portada
 
-= Titulo del documento
+= Titulo del documentos
 
 En este documento se está escribiendo un ejemplo de como escribir un en _Typst_.
 
