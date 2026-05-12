@@ -72,10 +72,25 @@
 
   set heading(numbering: "1.")
   set terms(separator: ": ")
+  
+  // For nested enumerations
   set enum(
       full:true, 
       numbering: numbly("{1:1}.", "{2:a})", "{3:i})","({4})" )
   )
+
+  // For showing equation references as (1)
+  show ref: it => {
+    let eq = math.equation
+    let el = it.element
+    // Skip all other references.
+    if el == none or el.func() != eq { return it }
+    // Override equation references.
+    link(el.location(), numbering(
+      el.numbering,
+      ..counter(eq).at(el.location())
+    ))
+  }
 
   show raw: set text(font: "New Computer Modern Mono", size: text-size)
   show heading: set block(above: 1.4em, below: 1em)
