@@ -105,4 +105,9 @@ Del un modo similar se pueden insertar tablas, usando la función `#table()` den
 #bibliography("bibliography.bib", style: "ieee", title: "Referencias", full: true)
 
 = Anexo
-#lorem(100)
+#if true [
+  #lorem(100)
+] else [
+  Esto no se va a mostrar
+]
+
