@@ -111,3 +111,11 @@ Del un modo similar se pueden insertar tablas, usando la función `#table()` den
   Esto no se va a mostrar
 ]
 
+```python
+def fun(a: int, b: int) -> int:
+    "Funcion que suma dos numeros"
+    c = a + b
+    return c
+print(fun(2, 5))
+# >> 7
+```
