@@ -1,11 +1,11 @@
 // Initial template config
 #import "config/template.typ" as template
 #show: doc => template.config(doc, darkmode: false)
+#import "content/portada_informe.typ" as portada
 
-#import "content/portada_biomecanica.typ" as portada
-
+// Useful packages for maths, presentations and diagrams
+#import "@preview/lilaq:0.6.0" as lq
 #import "@preview/physica:0.9.8": grad, div, curl, laplacian, vb, vu, dv, pdv
-// Useful packages for presentations and diagrams
 //#import "@preview/touying:0.7.3"
 //#import "@preview/cetz:0.5.0"
 //#import "@preview/circuiteria:0.2.0"
@@ -14,52 +14,19 @@
 // Add here any custom configs
 
 
-// Document
+
 
 #portada
 
-
 = Plantilla de informe en Typst
 
-Ahora voy a agregar una figura con la función `#image()`:
+Typst es un sistema de composición de documentos orientado a la escritura técnica pensado como una alternativa moderna a LaTeX. Su entorno principal funciona mediante markup `[...]`, es decir, texto enriquecido con una sintaxis simple y legible para definir títulos, listas, fórmulas, etc. Incorpora un entorno de código `{...}` y funciones que permite automatizar contenido, crear variables y programar comportamientos dinámicos dentro del documento. Al diferencia que LaTeX, Typst ofrece una sintaxis más compacta, consistente y fácil de aprender, junto con una compilación en tiempo real mucho más rápida y herramientas modernas integradas.
 
-#figure(
-  image("assets/logo.pdf", width: 2cm),
-  caption: [Logo UC de ejemplo.],
-) <mi_label>
-
-Ahora se referencia la @mi_label, notar que agrega también la palabra "Figure".
-
-Se destaca que al usar `[...]`  dentro del `caption`, lo que se hace es comenzar un entorno markup, por lo que se pueden usar fórmulas y demás dentro.
-
-Para citar de una bibliografía, se agrega la función `#bibliography()`, que acepta un `hayagriva` o un `.bib`, y se cita igual que referencias labels @Timoshenko_Goodier_2019.
-
-
-== Entornos comunes
-
-=== Matematicas
-
-$ integral_(Omega) d omega = integral_(partial Omega) omega $
-
-Esto es un vector: $vec(a, b)$
-
-=== Enumeraciones y definiciones
-
-+ hola
-
-+ oasd
-  + asdvar
-    + asvsl
-    + asdas
-  + asddvasdñk
-
-+ asdasñl
-
-
-/ Teorema 2: #lorem(60)
+Para más información sobre Typst, pueden revisar su tutorial en la documentación oficial: https://typst.app/docs/tutorial/writing-in-typst/, o ver la guía de equivalencia de funcionalidades entre Latex y Typst: https://typst.app/docs/guides/for-latex-users/
 
 
 = Algunas ecuaciones importantes
+
 Esta ecuación @eq:Euler se conoce popularmente como una de las más bellas del mundo (estoy en desacuerdo) porque tiene varios de los números más importantes de las matemáticas; estamos hablando de la identidad de Euler:
 
 // Esto es para mostrar la numeración de ecuaciones
@@ -74,7 +41,7 @@ En ingeniería, una de las ecuaciones más importantes es la ecuación de Navier
 $
 rho ( pdv( vb(v), t) + vb(v) dot grad vb(v) ) = - grad p + div vb(T) + vb(f)
 $ <eq:N-S>
-Donde $vb(v)(vb(x),t)$ es la velocidad espacial del fluido, y el resto de términos ya los deberían conocer.
+Donde $vb(v)(vb(x),t)$ es la velocidad espacial del fluido, y el resto de términos se deducen con facilidad.
 
 Otro conjunto de ecuaciones fundamentales son las ecuaciones de Maxwell en electromagnetismo @wikipedia:
 
@@ -89,37 +56,45 @@ $
 / Teorema 1: #lorem(50)
 
 #pagebreak()
-= Figuras y gráficos
+= Figuras, gráficos y tablas
+
+Para insertar figuras, se puede usar la función `#figure()` que acepta cualquier bloque de contenido, y le agrega un caption y un label para referenciarlo después. Dentro de `#figure()`, se pueden usar funciones como `#image()` para insertar imágenes, o incluso gráficos directo con la librería `lilaq`.
 
 
+// Mas información en https://lilaq.org/docs/reference/diagram
+#let N = 100
+#let x = lq.linspace(0, 6, num:N)
+#let y = x.map(i=> calc.sin(i))
 
-#let D_nom = 20 // diametro nominal [mm]
-#let D_x = 0.4 // diametro boquilla [mm]
-#let dT = 220 - 30 // diff temperatura [°C]
-#let b_coef = 69 / 1000000 // coef de expansion [mm/mm°C]
-#let tol = 0.2 // holgura [mm]
-#let tipo = "hole" // "hole" or "contour"
+#figure(
+  lq.diagram(
+    lq.plot(x, y, label: "sin(x)"),
+    lq.plot(x, i => calc.cos(3*i) / 2, label: "cos(3x)/2"),
+    xlabel: "x",
+    ylabel: "y",
+    title: "Funciones trigonométricas",
+    aspect-ratio: 1,
+    width: 80%
+  ),
+  caption: [Ejemplo de funciones trigonométricas.]
+) <fig:trig>
 
-#let Diam_correction(D_nom, tol, tipo) = {  
-  if tipo == "hole" {
-    let D_p = (D_nom + tol) / (1-b_coef*dT) + D_x/2;
-    return calc.round(D_p, digits: 2)
-    } 
-  else if tipo == "contour" {
-    let D_p = (D_nom - tol) / (1+b_coef*dT) - D_x/2; 
-    return calc.round(D_p, digits: 2)
-    }
-  else {
-    return "ValueError"
-    }
-}
+Del un modo similar se pueden insertar tablas, usando la función `#table()` dentro de `#figure()`. Para citar elementos (ecuaciones, figuras, tablas, bibliografía, etc), se usa el símbolo `@` seguido del `label` que se le dio al elemento.
 
-Ejemplo de ajuste de diámetro nominal *#D_nom mm* con tolerancia *#tol mm*, diámetro de boquilla *#D_x mm*, *$Delta T=$#dT °C*, y *$beta=$#b_coef*
-- para un *#tipo* es: *$D_p=$#Diam_correction(D_nom, tol, tipo) mm*. 
-- para un *contour* es: *$D_p=$#Diam_correction(D_nom, tol, "contour") mm*.
-
-Para este último caso, el delta de diámetro $Delta D=D_N-D_p$ es $Delta D=$#calc.round(D_nom - Diam_correction(D_nom, tol, "contour"), digits:2 )
-
+// Mas información en https://typst.app/docs/guides/tables/
+#figure(
+  table(
+    columns: (auto, auto),
+    align: (center, left),
+    table.header[*Cantidad*][*Ingrediente*],
+    [80], [Panes de completo],
+    [80], [Salchichas],
+    [6 kg], [Paltas],
+    [4.8 kg], [Tomates],
+    [Mucho], [Mayonesa],
+  ),
+  caption: [Ingredientes para preparar *80 completos*.]
+) <tab:completos>
 
 #pagebreak()
 #set heading(numbering: none)
@@ -127,7 +102,7 @@ Para este último caso, el delta de diámetro $Delta D=D_N-D_p$ es $Delta D=$#ca
 = Uso de IA Generativa
 #lorem(100)
 
-#bibliography("bibliography.bib", style: "ieee", title: "Referencias")
+#bibliography("bibliography.bib", style: "ieee", title: "Referencias", full: true)
 
 = Anexo
 #lorem(100)
