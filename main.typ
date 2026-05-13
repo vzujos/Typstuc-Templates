@@ -1,7 +1,7 @@
 // Initial template config
 #import "config/template.typ" as template
 #show: doc => template.config(doc, darkmode: false)
-#import "content/portada_informe.typ" as portada
+#import "content/portada_tarea.typ" as portada
 
 // Useful packages for maths, presentations and diagrams
 #import "@preview/lilaq:0.6.0" as lq
@@ -22,7 +22,7 @@
 
 Typst es un sistema de composición de documentos orientado a la escritura técnica pensado como una alternativa moderna a LaTeX. Su entorno principal funciona mediante markup `[...]`, es decir, texto enriquecido con una sintaxis simple y legible para definir títulos, listas, fórmulas, etc. Incorpora un entorno de código `{...}` y funciones que permite automatizar contenido, crear variables y programar comportamientos dinámicos dentro del documento. Al diferencia que LaTeX, Typst ofrece una sintaxis más compacta, consistente y fácil de aprender, junto con una compilación en tiempo real mucho más rápida y herramientas modernas integradas.
 
-Para más información sobre Typst, pueden revisar su tutorial en la documentación oficial: https://typst.app/docs/tutorial/writing-in-typst/, o ver la guía de equivalencia de funcionalidades entre Latex y Typst: https://typst.app/docs/guides/for-latex-users/
+Para más información sobre Typst, pueden revisar su tutorial en la documentación oficial: #text([https://typst.app/docs/tutorial/writing-in-typst/], fill: blue), o ver la guía de equivalencia de funcionalidades entre Latex y Typst: #text([https://typst.app/docs/guides/for-latex-users/], fill: blue).
 
 
 = Algunas ecuaciones importantes
@@ -111,11 +111,15 @@ Del un modo similar se pueden insertar tablas, usando la función `#table()` den
   Esto no se va a mostrar
 ]
 
+El formato para agregar código es el mismo que utiliza Markdown:
+
 ```python
+import numpy as np
+
 def fun(a: int, b: int) -> int:
-    "Funcion que suma dos numeros"
+    "Funcion arbitraria"
     c = a + b
-    return c
-print(fun(2, 5))
-# >> 7
+    return c * np.exp(c)
+
+print(fun(2, 5)) # >> 7 * e**7
 ```

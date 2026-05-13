@@ -92,7 +92,6 @@
     ))
   }
 
-  show link: underline
   show raw: set text(font: "New Computer Modern Mono", size: text-size)
   show heading: set block(above: 1.4em, below: 1em)
   show heading.where(level:1): set text(size: 14pt)
