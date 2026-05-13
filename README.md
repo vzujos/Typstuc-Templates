@@ -5,7 +5,7 @@ Plantillas en Typst para informes, tareas y ayudantías con el formato genérico
 ## Uso
 
 1. Edita [config/variables.typ](config/variables.typ) con los datos de tu documento.
-2. Selecciona una de las portadas de [content/portada_{name}.typ](content/) y edita el nombre del import al comienzo de [main.typ](main.typ) (`#import "content/portada_tarea.typ" as portada`).
+2. Selecciona una de las portadas de [content/portada_{name}.typ](content/) y edita el nombre del `include` al comienzo de [main.typ](main.typ) (`#include "content/portada_tarea.typ"`).
 3. Edita la configuración general de acuerdo a tus necesidades en [config/template.typ](config/template.typ).
 4. Edita tu documento dentro de [main.typ](main.typ).
 5. Compila el documento con Typst.
