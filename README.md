@@ -1,4 +1,4 @@
-# Typst UC Templates
+# Typstuc Templates
 
 Plantillas en Typst para informes, tareas y ayudantías con formato genérico UC.
 
@@ -6,9 +6,9 @@ El proyecto contiene un conjunto de portadas típicamente usadas para tareas e i
 
 ## Uso
 
-1. Edita [config/variables.typ](Typst-UC-Templates/config/variables.typ) con los datos de tu documento.
-2. Selecciona una de las portadas de [content/portada_{name}.typ](Typst-UC-Templates/config/variables.typ) y edita el nombre del import al comienzo de [main.typ](Typst-UC-Templates/main.typ).
-3. Edita tu documento dentro de [main.typ](Typst-UC-Templates/main.typ).
+1. Edita [config/variables.typ](config/variables.typ) con los datos de tu documento.
+2. Selecciona una de las portadas de [content/portada_{name}.typ](content/) y edita el nombre del import al comienzo de [main.typ](main.typ).
+3. Edita tu documento dentro de [main.typ](main.typ).
 4. Compila el documento con Typst.
 
 ## Estructura
