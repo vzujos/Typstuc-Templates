@@ -1,7 +1,6 @@
 // Initial template config
 #import "config/template.typ" as template
 #show: doc => template.config(doc, darkmode: false)
-#import "content/portada_tarea.typ" as portada
 
 // Useful packages for maths, presentations and diagrams
 #import "@preview/lilaq:0.6.0" as lq
@@ -15,8 +14,7 @@
 
 
 
-
-#portada
+#include "content/portada_tarea.typ"
 
 = Plantilla de informe en Typst
 
