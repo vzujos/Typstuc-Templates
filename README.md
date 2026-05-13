@@ -22,6 +22,8 @@ Plantillas en Typst para informes, tareas y ayudantías con el formato genérico
   - `biomecanica.typ`
   - `informe.typ`
   - `tarea.typ`
+- `main.typ`: main file
+- `main.pdf`: compiled file
 
 ## Requisitos
 
