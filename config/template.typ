@@ -80,6 +80,7 @@
   )
 
   // For showing equation references as (1)
+  set math.equation(numbering: "(1)")
   show ref: it => {
     let eq = math.equation
     let el = it.element
