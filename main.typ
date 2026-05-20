@@ -9,6 +9,8 @@
 //#import "@preview/cetz:0.5.0"
 //#import "@preview/circuiteria:0.2.0"
 //#import "@preview/fletcher:0.5.8"
+//#import "@preview/akatable:0.1.0": academic-table
+//#import "@preview/tiaoma:0.3.0" as tiaoma
 
 // Add here any custom configs
 
