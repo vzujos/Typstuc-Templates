@@ -16,7 +16,7 @@
 
 
 
-#include "content/portada_tarea.typ"
+#include "content/portada_informe_opti.typ"
 
 = Plantilla de informe en Typst
 
