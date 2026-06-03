@@ -4,19 +4,17 @@
 
 // Useful packages for maths, presentations and diagrams
 #import "@preview/lilaq:0.6.0" as lq
-#import "@preview/physica:0.9.8": grad, div, curl, laplacian, vb, vu, dv, pdv
+#import "@preview/physica:0.9.8": curl, div, dv, grad, laplacian, pdv, vb, vu
 //#import "@preview/touying:0.7.3"
 //#import "@preview/cetz:0.5.0"
 //#import "@preview/circuiteria:0.2.0"
 //#import "@preview/fletcher:0.5.8"
-//#import "@preview/akatable:0.1.0": academic-table
-//#import "@preview/tiaoma:0.3.0" as tiaoma
 
 // Add here any custom configs
 
 
 
-#include "content/portada_informe_opti.typ"
+#include "content/portada_tarea.typ"
 
 = Plantilla de informe en Typst
 
@@ -32,24 +30,25 @@ Esta ecuación @eq:Euler se conoce popularmente como una de las más bellas del 
 // Esto es para mostrar la numeración de ecuaciones
 #set math.equation(numbering: "(1)")
 
-$ 1 + e^(i pi) &= 1 dot cos(pi) + i dot sin(pi) \
-&= (-1) + i dot 0 \
-&= 0
+$
+  paren.l 1 + e^(i pi) & = 1 dot cos(pi) + i dot sin(pi) paren.r \
+                       & = (-1) + i dot 0 \
+                       & = 0
 $ <eq:Euler>
 
 En ingeniería, una de las ecuaciones más importantes es la ecuación de Navier-Stokes @eq:N-S:
 $
-rho ( pdv( vb(v), t) + vb(v) dot grad vb(v) ) = - grad p + div vb(T) + vb(f)
+  rho ( pdv(vb(v), t) + vb(v) dot grad vb(v) ) = - grad p + div vb(T) + vb(f)
 $ <eq:N-S>
 Donde $vb(v)(vb(x),t)$ es la velocidad espacial del fluido, y el resto de términos se deducen con facilidad.
 
 Otro conjunto de ecuaciones fundamentales son las ecuaciones de Maxwell en electromagnetismo @wikipedia:
 
 $
-div vb(E) &= rho / epsilon_0 \
-div vb(B) &= 0 \
-curl vb(E) &= - pdv( vb(B), t) \
-curl vb(B) &= mu_0 vb(J) + mu_0 epsilon_0 pdv( vb(E), t)
+   div vb(E) & = rho / epsilon_0 \
+   div vb(B) & = 0 \
+  curl vb(E) & = - pdv(vb(B), t) \
+  curl vb(B) & = mu_0 vb(J) + mu_0 epsilon_0 pdv(vb(E), t)
 $
 
 // Esta notación en Typst se llama definición
@@ -62,21 +61,21 @@ Para insertar figuras, se puede usar la función `#figure()` que acepta cualquie
 
 
 // Mas información en https://lilaq.org/docs/reference/diagram
-#let N = 100
-#let x = lq.linspace(0, 6, num:N)
-#let y = x.map(i=> calc.sin(i))
+#let N = 80
+#let x = lq.linspace(0, 6, num: N)
+#let y = x.map(i => calc.sin(i))
 
 #figure(
   lq.diagram(
     lq.plot(x, y, label: "sin(x)"),
-    lq.plot(x, i => calc.cos(3*i) / 2, label: "cos(3x)/2"),
+    lq.plot(x, i => calc.cos(3 * i) / 2, label: "cos(3x)/2"),
     xlabel: "x",
     ylabel: "y",
     title: "Funciones trigonométricas",
     aspect-ratio: 1,
-    width: 80%
+    width: 80%,
   ),
-  caption: [Ejemplo de funciones trigonométricas.]
+  caption: [Ejemplo de funciones trigonométricas.],
 ) <fig:trig>
 
 Del un modo similar se pueden insertar tablas, usando la función `#table()` dentro de `#figure()`. Para citar elementos (ecuaciones, figuras, tablas, bibliografía, etc), se usa el símbolo `@` seguido del `label` que se le dio al elemento.
@@ -93,7 +92,7 @@ Del un modo similar se pueden insertar tablas, usando la función `#table()` den
     [4.8 kg], [Tomates],
     [Mucho], [Mayonesa],
   ),
-  caption: [Ingredientes para preparar *80 completos*.]
+  caption: [Ingredientes para preparar *80 completos*.],
 ) <tab:completos>
 
 #pagebreak()
@@ -102,7 +101,7 @@ Del un modo similar se pueden insertar tablas, usando la función `#table()` den
 = Uso de IA Generativa
 #lorem(100)
 
-#bibliography("bibliography.bib", style: "ieee", title: "Referencias", full: true)
+#bibliography("bibliography.yml", style: "ieee", title: "Referencias", full: true)
 
 = Anexo
 #if true [

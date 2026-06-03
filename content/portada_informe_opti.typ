@@ -11,7 +11,7 @@
   #v(75mm)
   #title()
   #line(length: 170mm)
-  #text(tema, size: 18pt, weight: "bold", style: "normal")\
+  #text(tema, size: 19pt, weight: "bold", style: "normal")\
   #v(0mm)
   #text([*Grupo* #grupo], size: 18pt)
   ]
@@ -21,7 +21,7 @@
   #text([*Integrantes*], size: 14pt)\
   #authors
   #v(6mm)
-  *Fecha:* #date]
+  #text([Fecha entrega:], size: 13pt) #date]
   
 #pagebreak()
 
@@ -36,3 +36,4 @@
 
 #pagebreak()
 #counter(page).update(1)
+
