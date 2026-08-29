@@ -60,7 +60,7 @@
     numbering: "1",
     number-align: center + bottom,
     footer: auto,
-    header: _header(),
+    header: if head == 1 [#_header()] else [],
     header-ascent: -150%,
   )
 

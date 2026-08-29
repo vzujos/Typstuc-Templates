@@ -5,6 +5,7 @@
 #let correo = "correo@uc.cl"
 #let titulo = "Título"
 #let tema = "Tema"
+#let n_alum = "Nº de alumno"
 
 // CURSO
 
@@ -19,4 +20,5 @@
 #let grupo = "XX"
 #let profesor = "Nombre Profesor"
 #let authors = [Nombre 1\ Nombre 2\ Nombre 3]
-#let formato = 0 //normal = 0, opti = 1
+#let formato = 1 //normal = 0, opti = 1
+#let head = 1 //Tener o no encabezado
