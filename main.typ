@@ -5,6 +5,7 @@
 // Useful packages for maths, presentations and diagrams
 #import "@preview/lilaq:0.6.0" as lq
 #import "@preview/physica:0.9.8": grad, div, curl, laplacian, vb, vu, dv, pdv
+//#import "@preview/subpar:0.2.2"
 //#import "@preview/touying:0.7.3"
 //#import "@preview/cetz:0.5.0"
 //#import "@preview/circuiteria:0.2.0"
